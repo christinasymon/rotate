@@ -41,7 +41,7 @@ bool Shader::AddShader(GLenum ShaderType)
   {
 	std::ifstream ifs;
 	std::string temp;
-	ifs.open("pa1_shaders.vert");
+	ifs.open("../shaders/pa1_vertex.txt");
 	while(getline(ifs,temp))
 	{
 		s.append(temp);
@@ -53,7 +53,7 @@ bool Shader::AddShader(GLenum ShaderType)
   {
     std::ifstream ifs;
 	std::string temp;
-	ifs.open("pa1_shaders.frag");
+	ifs.open("../shaders/pa1_fragment.txt");
 	while(getline(ifs,temp))
 	{
 		s.append(temp);

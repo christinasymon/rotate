@@ -11,7 +11,7 @@ class Object
     ~Object();
     void Update(unsigned int dt);
     void Render();
-
+    void Pause(bool);
     glm::mat4 GetModel();
 
   private:
@@ -20,7 +20,7 @@ class Object
     std::vector<unsigned int> Indices;
     GLuint VB;
     GLuint IB;
-
+    bool pause;
     float angle;
 };
 

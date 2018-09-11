@@ -53,7 +53,7 @@ bool Engine::Initialize()
 void Engine::Run()
 {
   m_running = true;
-
+  
   while(m_running)
   {
     // Update the DT
@@ -87,7 +87,37 @@ void Engine::Keyboard()
     {
       m_running = false;
     }
+    else if(m_event.key.keysym.sym == SDLK_0)
+	{ 
+	if(pause == false)
+	{
+	 m_graphics->pause(1);
+        pause=true;
+	}
+        else if(pause == true)
+        {
+        m_graphics->pause(0);
+	pause=false;
+	}
+	}
   }
+  else if(m_event.type == SDL_MOUSEBUTTONDOWN)
+ {
+    if(m_event.key.keysym.sym == SDL_BUTTON_LEFT)
+    {
+	if(pause == false)
+	{
+	 m_graphics->pause(1);	
+	pause=true;
+	}
+	else if(pause == true)
+	{
+		m_graphics->pause(0);
+		pause=false;
+	}
+    }
+}
+  
 }
 
 unsigned int Engine::getDT()

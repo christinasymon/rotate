@@ -107,6 +107,13 @@ bool Graphics::Initialize(int width, int height)
   return true;
 }
 
+
+void Graphics::pause(bool pause2)
+{
+m_cube->Pause(pause2);
+}
+
+
 void Graphics::Update(unsigned int dt)
 {
   // Update the object
