@@ -18,6 +18,7 @@ class Graphics
     void Update(unsigned int dt);
     void Render();
     void pause(bool);
+    
   private:
     std::string ErrorString(GLenum error);
 
@@ -28,7 +29,7 @@ class Graphics
     GLint m_viewMatrix;
     GLint m_modelMatrix;
 
-    Object *m_cube;
+    Object *m_cube, *m_cube1;
 };
 
 #endif /* GRAPHICS_H */

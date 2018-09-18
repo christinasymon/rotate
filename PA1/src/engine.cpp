@@ -101,22 +101,22 @@ void Engine::Keyboard()
 	}
 	}
   }
-  else if(m_event.type == SDL_MOUSEBUTTONDOWN)
- {
-    if(m_event.key.keysym.sym == SDL_BUTTON_LEFT)
-    {
-	if(pause == false)
-	{
-	 m_graphics->pause(1);	
-	pause=true;
-	}
-	else if(pause == true)
-	{
-		m_graphics->pause(0);
-		pause=false;
-	}
-    }
-}
+//  else if(m_event.type == SDL_MOUSEBUTTONDOWN)
+// {
+  //  if(m_event.button.button == SDL_BUTTON_LEFT)
+   // {
+//	if(pause == false)
+//	{
+//	 m_graphics->pause(1);	
+//	pause=true;
+//	}
+//	else if(pause == true)
+//	{
+//		m_graphics->pause(0);
+//		pause=false;
+//	}
+  //  }
+//}
   
 }
 

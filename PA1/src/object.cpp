@@ -61,6 +61,7 @@ Object::Object()
   }
 
   angle = 0.0f;
+  angle1=0.0f;
   pause==false;
   glGenBuffers(1, &VB);
   glBindBuffer(GL_ARRAY_BUFFER, VB);
@@ -83,16 +84,40 @@ Object::~Object()
 
 void Object::Update(unsigned int dt)
 {  
-	if(pause==false)
+	if(if_moon==0)
 	{
-		angle += dt * M_PI/1000;
-		 model =glm::rotate(glm::mat4(1.0f),(angle),glm::vec3(0.0,1.0,0.0))*glm::translate(glm::mat4(1.0f),glm::vec3(5.0,3.0,3.0))*glm::rotate(glm::mat4(1.0f),(angle),glm::vec3(0.0,1.0,0.0)) ;
+		if( pause == false )
+		{
+			angle += dt * M_PI/3000;
+			translate=glm::translate(glm::mat4(1.0f),glm::vec3(6*sin(angle),0.0,6*cos(angle)));
+			model =translate*glm::rotate(glm::mat4(1.0f),glm::radians(180.0f),glm::vec3(sin(angle),0.0,cos(angle))) ;
+		}
 	}
+	   else if(if_moon==1)
+        {
+               angle1 += dt * M_PI/1000;
+               model =glm::translate(origin,glm::vec3(3*sin(angle1),0.0,3*cos(angle1)))*glm::rotate(glm::mat4(1.0f),glm::radians(180.0f),glm::vec3(sin(angle1),0.0,cos(angle1)))*glm::scale(glm::mat4(1.0f),glm::vec3(0.5f,0.5f,0.5f)) ;
+        }
+
 }
 glm::mat4 Object::GetModel()
 {
   return model;
 }
+glm::mat4 Object::GetTranslate()
+{
+return translate;
+}
+
+void Object:: moonplanet(unsigned int check)
+{
+if_moon=check;
+}
+void Object:: Setoriginmatrix(glm::mat4 omatrix)
+{
+origin=omatrix;
+}
+
 
 void Object::Render()
 {

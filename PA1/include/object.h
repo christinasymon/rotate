@@ -13,15 +13,19 @@ class Object
     void Render();
     void Pause(bool);
     glm::mat4 GetModel();
-
-  private:
-    glm::mat4 model;
+    glm::mat4 GetTranslate();
+    void moonplanet(unsigned int);
+    void Setoriginmatrix(glm::mat4);
+ 
+ private:
+    glm::mat4 model, origin, translate;    
     std::vector<Vertex> Vertices;
     std::vector<unsigned int> Indices;
     GLuint VB;
     GLuint IB;
     bool pause;
-    float angle;
+    float angle, angle1;
+    unsigned int if_moon;
 };
 
 #endif /* OBJECT_H */

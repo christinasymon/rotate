@@ -46,6 +46,12 @@ bool Graphics::Initialize(int width, int height)
 
   // Create the object
   m_cube = new Object();
+ 
+ //create the moon
+  m_cube1 = new Object();
+ 
+ m_cube->moonplanet(0);
+ m_cube1->moonplanet(1);
 
   // Set up the shaders
   m_shader = new Shader();
@@ -100,7 +106,8 @@ bool Graphics::Initialize(int width, int height)
     return false;
   }
 
-  //enable depth testing
+
+//enable depth testing
   glEnable(GL_DEPTH_TEST);
   glDepthFunc(GL_LESS);
 
@@ -118,8 +125,10 @@ void Graphics::Update(unsigned int dt)
 {
   // Update the object
   m_cube->Update(dt);
-}
+ m_cube1->Setoriginmatrix(m_cube->GetTranslate());
+ m_cube1->Update(dt);
 
+}
 void Graphics::Render()
 {
   //clear the screen
@@ -136,6 +145,10 @@ void Graphics::Render()
   // Render the object
   glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_cube->GetModel()));
   m_cube->Render();
+  //Render the object
+  glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_cube1->GetModel()));
+  m_cube1->Render();
+
 
   // Get any errors from OpenGL
   auto error = glGetError();
